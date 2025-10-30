@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "पौधे और मिट्टी स्वास्थ्य विश्लेषक",
+    "description": "AI-संचालित अंतर्दृष्टि के साथ अपनी खेती को सशक्त बनाएं"
+  },
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "soilAnalysis": "मिट्टी विश्लेषण",
+    "plantHealth": "पौधे का स्वास्थ्य",
+    "cropRecommendations": "फसल सिफारिशें",
+    "reports": "रिपोर्ट",
+    "mapView": "मानचित्र दृश्य",
+    "forum": "सामुदायिक मंच",
+    "calendar": "रखरखाव कैलेंडर",
+    "sustainability": "स्थिरता स्कोर",
+    "logout": "लॉग आउट"
+  },
+  "auth": {
+    "login": "लॉगिन",
+    "signup": "साइन अप",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "selectRole": "अपनी भूमिका चुनें",
+    "farmer": "किसान",
+    "labExpert": "लैब विशेषज्ञ",
+    "admin": "व्यवस्थापक",
+    "alreadyHaveAccount": "पहले से खाता है?",
+    "dontHaveAccount": "खाता नहीं है?",
+    "welcome": "वापसी पर स्वागत है!",
+    "getStarted": "अपने खाते के साथ शुरू करें"
+  },
+  "dashboard": {
+    "welcome": "स्वागत",
+    "overview": "खेत अवलोकन",
+    "soilHealth": "मिट्टी का स्वास्थ्य",
+    "plantHealth": "पौधे का स्वास्थ्य",
+    "recentActivity": "हाल की गतिविधि",
+    "quickActions": "त्वरित कार्य"
+  },
+  "soil": {
+    "analysis": "मिट्टी विश्लेषण",
+    "uploadImage": "मिट्टी की छवि अपलोड करें",
+    "captureImage": "छवि कैप्चर करें",
+    "ph": "pH स्तर",
+    "nitrogen": "नाइट्रोजन (N)",
+    "phosphorus": "फॉस्फोरस (P)",
+    "potassium": "पोटैशियम (K)",
+    "moisture": "नमी",
+    "temperature": "तापमान",
+    "analyze": "मिट्टी का विश्लेषण करें",
+    "results": "विश्लेषण परिणाम",
+    "recommendations": "सिफारिशें"
+  },
+  "plant": {
+    "health": "पौधे का स्वास्थ्य",
+    "uploadLeaf": "पत्ती की छवि अपलोड करें",
+    "disease": "रोग का पता चला",
+    "confidence": "विश्वास",
+    "treatment": "उपचार सिफारिशें",
+    "healthy": "स्वस्थ",
+    "diseased": "रोगग्रस्त"
+  },
+  "crop": {
+    "recommendations": "फसल सिफारिशें",
+    "suitable": "आपकी मिट्टी के लिए उपयुक्त फसलें",
+    "reason": "यह फसल क्यों?",
+    "season": "सर्वोत्तम मौसम"
+  },
+  "reports": {
+    "title": "रिपोर्ट और विश्लेषण",
+    "download": "PDF रिपोर्ट डाउनलोड करें",
+    "generate": "रिपोर्ट तैयार करें",
+    "history": "रिपोर्ट इतिहास"
+  },
+  "map": {
+    "title": "क्षेत्र मानचित्र दृश्य",
+    "healthy": "स्वस्थ",
+    "moderate": "मध्यम",
+    "critical": "महत्वपूर्ण"
+  },
+  "forum": {
+    "title": "सामुदायिक मंच",
+    "askQuestion": "प्रश्न पूछें",
+    "recentPosts": "हाल के पोस्ट",
+    "yourQuestions": "आपके प्रश्न",
+    "expertAnswers": "विशेषज्ञ उत्तर",
+    "post": "प्रश्न पोस्ट करें",
+    "reply": "जवाब दें"
+  },
+  "calendar": {
+    "title": "रखरखाव कैलेंडर",
+    "watering": "पानी देना",
+    "fertilizing": "उर्वरक देना",
+    "pruning": "छंटाई",
+    "harvesting": "कटाई",
+    "upcoming": "आगामी कार्य"
+  },
+  "sustainability": {
+    "title": "स्थिरता स्कोर",
+    "yourScore": "आपका स्कोर",
+    "ecoTips": "पर्यावरण के अनुकूल सुझाव",
+    "waterConservation": "जल संरक्षण",
+    "organicFarming": "जैविक खेती",
+    "soilHealth": "मिट्टी स्वास्थ्य प्रथाएं"
+  },
+  "common": {
+    "submit": "जमा करें",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफलता"
+  }
+}

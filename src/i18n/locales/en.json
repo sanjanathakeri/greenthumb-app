@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "Plant & Soil Health Analyzer",
+    "description": "Empower your farming with AI-driven insights"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "soilAnalysis": "Soil Analysis",
+    "plantHealth": "Plant Health",
+    "cropRecommendations": "Crop Recommendations",
+    "reports": "Reports",
+    "mapView": "Map View",
+    "forum": "Community Forum",
+    "calendar": "Maintenance Calendar",
+    "sustainability": "Sustainability Score",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "selectRole": "Select Your Role",
+    "farmer": "Farmer",
+    "labExpert": "Lab Expert",
+    "admin": "Admin",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "welcome": "Welcome back!",
+    "getStarted": "Get started with your account"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "overview": "Farm Overview",
+    "soilHealth": "Soil Health",
+    "plantHealth": "Plant Health",
+    "recentActivity": "Recent Activity",
+    "quickActions": "Quick Actions"
+  },
+  "soil": {
+    "analysis": "Soil Analysis",
+    "uploadImage": "Upload Soil Image",
+    "captureImage": "Capture Image",
+    "ph": "pH Level",
+    "nitrogen": "Nitrogen (N)",
+    "phosphorus": "Phosphorus (P)",
+    "potassium": "Potassium (K)",
+    "moisture": "Moisture",
+    "temperature": "Temperature",
+    "analyze": "Analyze Soil",
+    "results": "Analysis Results",
+    "recommendations": "Recommendations"
+  },
+  "plant": {
+    "health": "Plant Health",
+    "uploadLeaf": "Upload Leaf Image",
+    "disease": "Disease Detected",
+    "confidence": "Confidence",
+    "treatment": "Treatment Recommendations",
+    "healthy": "Healthy",
+    "diseased": "Diseased"
+  },
+  "crop": {
+    "recommendations": "Crop Recommendations",
+    "suitable": "Suitable Crops for Your Soil",
+    "reason": "Why this crop?",
+    "season": "Best Season"
+  },
+  "reports": {
+    "title": "Reports & Analytics",
+    "download": "Download PDF Report",
+    "generate": "Generate Report",
+    "history": "Report History"
+  },
+  "map": {
+    "title": "Field Map View",
+    "healthy": "Healthy",
+    "moderate": "Moderate",
+    "critical": "Critical"
+  },
+  "forum": {
+    "title": "Community Forum",
+    "askQuestion": "Ask a Question",
+    "recentPosts": "Recent Posts",
+    "yourQuestions": "Your Questions",
+    "expertAnswers": "Expert Answers",
+    "post": "Post Question",
+    "reply": "Reply"
+  },
+  "calendar": {
+    "title": "Maintenance Calendar",
+    "watering": "Watering",
+    "fertilizing": "Fertilizing",
+    "pruning": "Pruning",
+    "harvesting": "Harvesting",
+    "upcoming": "Upcoming Tasks"
+  },
+  "sustainability": {
+    "title": "Sustainability Score",
+    "yourScore": "Your Score",
+    "ecoTips": "Eco-Friendly Tips",
+    "waterConservation": "Water Conservation",
+    "organicFarming": "Organic Farming",
+    "soilHealth": "Soil Health Practices"
+  },
+  "common": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}

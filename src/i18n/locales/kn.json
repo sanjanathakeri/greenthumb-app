@@ -1,0 +1,115 @@
+{
+  "app": {
+    "title": "ಸಸ್ಯ ಮತ್ತು ಮಣ್ಣಿನ ಆರೋಗ್ಯ ವಿಶ್ಲೇಷಕ",
+    "description": "AI-ಚಾಲಿತ ಒಳನೋಟಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಕೃಷಿಯನ್ನು ಶಕ್ತಗೊಳಿಸಿ"
+  },
+  "nav": {
+    "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    "soilAnalysis": "ಮಣ್ಣಿನ ವಿಶ್ಲೇಷಣೆ",
+    "plantHealth": "ಸಸ್ಯ ಆರೋಗ್ಯ",
+    "cropRecommendations": "ಬೆಳೆ ಶಿಫಾರಸುಗಳು",
+    "reports": "ವರದಿಗಳು",
+    "mapView": "ನಕ್ಷೆ ನೋಟ",
+    "forum": "ಸಮುದಾಯ ವೇದಿಕೆ",
+    "calendar": "ನಿರ್ವಹಣೆ ಕ್ಯಾಲೆಂಡರ್",
+    "sustainability": "ಸುಸ್ಥಿರತೆ ಸ್ಕೋರ್",
+    "logout": "ಲಾಗ್ ಔಟ್"
+  },
+  "auth": {
+    "login": "ಲಾಗಿನ್",
+    "signup": "ಸೈನ್ ಅಪ್",
+    "email": "ಇಮೇಲ್",
+    "password": "ಪಾಸ್‌ವರ್ಡ್",
+    "confirmPassword": "ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ",
+    "selectRole": "ನಿಮ್ಮ ಪಾತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "farmer": "ರೈತ",
+    "labExpert": "ಲ್ಯಾಬ್ ತಜ್ಞ",
+    "admin": "ನಿರ್ವಾಹಕ",
+    "alreadyHaveAccount": "ಈಗಾಗಲೇ ಖಾತೆ ಹೊಂದಿದ್ದೀರಾ?",
+    "dontHaveAccount": "ಖಾತೆ ಇಲ್ಲವೇ?",
+    "welcome": "ಮತ್ತೆ ಸ್ವಾಗತ!",
+    "getStarted": "ನಿಮ್ಮ ಖಾತೆಯೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ"
+  },
+  "dashboard": {
+    "welcome": "ಸ್ವಾಗತ",
+    "overview": "ಜಮೀನು ಅವಲೋಕನ",
+    "soilHealth": "ಮಣ್ಣಿನ ಆರೋಗ್ಯ",
+    "plantHealth": "ಸಸ್ಯ ಆರೋಗ್ಯ",
+    "recentActivity": "ಇತ್ತೀಚಿನ ಚಟುವಟಿಕೆ",
+    "quickActions": "ತ್ವರಿತ ಕ್ರಿಯೆಗಳು"
+  },
+  "soil": {
+    "analysis": "ಮಣ್ಣಿನ ವಿಶ್ಲೇಷಣೆ",
+    "uploadImage": "ಮಣ್ಣಿನ ಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "captureImage": "ಚಿತ್ರ ಸೆರೆಹಿಡಿಯಿರಿ",
+    "ph": "pH ಮಟ್ಟ",
+    "nitrogen": "ಸಾರಜನಕ (N)",
+    "phosphorus": "ರಂಜಕ (P)",
+    "potassium": "ಪೊಟ್ಯಾಸಿಯಮ್ (K)",
+    "moisture": "ತೇವಾಂಶ",
+    "temperature": "ತಾಪಮಾನ",
+    "analyze": "ಮಣ್ಣು ವಿಶ್ಲೇಷಿಸಿ",
+    "results": "ವಿಶ್ಲೇಷಣೆ ಫಲಿತಾಂಶಗಳು",
+    "recommendations": "ಶಿಫಾರಸುಗಳು"
+  },
+  "plant": {
+    "health": "ಸಸ್ಯ ಆರೋಗ್ಯ",
+    "uploadLeaf": "ಎಲೆ ಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "disease": "ರೋಗ ಪತ್ತೆಯಾಗಿದೆ",
+    "confidence": "ವಿಶ್ವಾಸ",
+    "treatment": "ಚಿಕಿತ್ಸೆ ಶಿಫಾರಸುಗಳು",
+    "healthy": "ಆರೋಗ್ಯಕರ",
+    "diseased": "ರೋಗಗ್ರಸ್ತ"
+  },
+  "crop": {
+    "recommendations": "ಬೆಳೆ ಶಿಫಾರಸುಗಳು",
+    "suitable": "ನಿಮ್ಮ ಮಣ್ಣಿಗೆ ಸೂಕ್ತವಾದ ಬೆಳೆಗಳು",
+    "reason": "ಈ ಬೆಳೆ ಏಕೆ?",
+    "season": "ಉತ್ತಮ ಋತು"
+  },
+  "reports": {
+    "title": "ವರದಿಗಳು ಮತ್ತು ವಿಶ್ಲೇಷಣೆಗಳು",
+    "download": "PDF ವರದಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+    "generate": "ವರದಿ ರಚಿಸಿ",
+    "history": "ವರದಿ ಇತಿಹಾಸ"
+  },
+  "map": {
+    "title": "ಕ್ಷೇತ್ರ ನಕ್ಷೆ ನೋಟ",
+    "healthy": "ಆರೋಗ್ಯಕರ",
+    "moderate": "ಮಧ್ಯಮ",
+    "critical": "ನಿರ್ಣಾಯಕ"
+  },
+  "forum": {
+    "title": "ಸಮುದಾಯ ವೇದಿಕೆ",
+    "askQuestion": "ಪ್ರಶ್ನೆ ಕೇಳಿ",
+    "recentPosts": "ಇತ್ತೀಚಿನ ಪೋಸ್ಟ್‌ಗಳು",
+    "yourQuestions": "ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳು",
+    "expertAnswers": "ತಜ್ಞರ ಉತ್ತರಗಳು",
+    "post": "ಪ್ರಶ್ನೆ ಪೋಸ್ಟ್ ಮಾಡಿ",
+    "reply": "ಉತ್ತರಿಸಿ"
+  },
+  "calendar": {
+    "title": "ನಿರ್ವಹಣೆ ಕ್ಯಾಲೆಂಡರ್",
+    "watering": "ನೀರುಹಾಕುವಿಕೆ",
+    "fertilizing": "ಗೊಬ್ಬರ ಹಾಕುವಿಕೆ",
+    "pruning": "ಕತ್ತರಿಸುವಿಕೆ",
+    "harvesting": "ಸುಗ್ಗಿ",
+    "upcoming": "ಮುಂಬರುವ ಕಾರ್ಯಗಳು"
+  },
+  "sustainability": {
+    "title": "ಸುಸ್ಥಿರತೆ ಸ್ಕೋರ್",
+    "yourScore": "ನಿಮ್ಮ ಸ್ಕೋರ್",
+    "ecoTips": "ಪರಿಸರ ಸ್ನೇಹಿ ಸಲಹೆಗಳು",
+    "waterConservation": "ನೀರಿನ ಸಂರಕ್ಷಣೆ",
+    "organicFarming": "ಸಾವಯವ ಕೃಷಿ",
+    "soilHealth": "ಮಣ್ಣಿನ ಆರೋಗ್ಯ ಅಭ್ಯಾಸಗಳು"
+  },
+  "common": {
+    "submit": "ಸಲ್ಲಿಸು",
+    "cancel": "ರದ್ದುಮಾಡು",
+    "save": "ಉಳಿಸು",
+    "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    "error": "ದೋಷ",
+    "success": "ಯಶಸ್ವಿ"
+  }
+}

@@ -5,6 +5,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+import DashboardLayout from "./pages/DashboardLayout";
+import Dashboard from "./pages/Dashboard";
+import SoilAnalysis from "./pages/SoilAnalysis";
+import PlantHealth from "./pages/PlantHealth";
+import CropRecommendations from "./pages/CropRecommendations";
+import Reports from "./pages/Reports";
+import MapView from "./pages/MapView";
+import Forum from "./pages/Forum";
+import Calendar from "./pages/Calendar";
+import Sustainability from "./pages/Sustainability";
+import "./i18n/config";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +28,18 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/" element={<DashboardLayout />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="soil-analysis" element={<SoilAnalysis />} />
+            <Route path="plant-health" element={<PlantHealth />} />
+            <Route path="crop-recommendations" element={<CropRecommendations />} />
+            <Route path="reports" element={<Reports />} />
+            <Route path="map-view" element={<MapView />} />
+            <Route path="forum" element={<Forum />} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="sustainability" element={<Sustainability />} />
+          </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
