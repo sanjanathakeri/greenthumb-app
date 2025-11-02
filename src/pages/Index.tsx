@@ -12,23 +12,23 @@ const Index = () => {
   const features = [
     {
       icon: TestTube,
-      title: 'Soil Analysis',
-      description: 'Advanced soil testing and nutrient analysis',
+      title: t('home.soilAnalysis'),
+      description: t('home.soilAnalysisDesc'),
     },
     {
       icon: Leaf,
-      title: 'Plant Health',
-      description: 'AI-powered disease detection and treatment',
+      title: t('home.plantHealth'),
+      description: t('home.plantHealthDesc'),
     },
     {
       icon: Sprout,
-      title: 'Crop Recommendations',
-      description: 'Data-driven crop selection for optimal yield',
+      title: t('home.cropRecommendations'),
+      description: t('home.cropRecommendationsDesc'),
     },
     {
       icon: TrendingUp,
-      title: 'Analytics Dashboard',
-      description: 'Real-time insights and performance tracking',
+      title: t('home.analyticsDashboard'),
+      description: t('home.analyticsDashboardDesc'),
     },
   ];
 
@@ -56,7 +56,7 @@ const Index = () => {
             {t('app.description')}
           </p>
           <Button onClick={() => navigate('/auth')} size="lg" className="text-lg px-8">
-            Get Started
+            {t('common.getStarted')}
           </Button>
         </motion.div>
 

@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button';
 import ImageUpload from '@/components/ImageUpload';
 import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
+import { formatNumberWithPercent } from '@/utils/dateUtils';
 
 const PlantHealth = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<any>(null);
 
@@ -125,7 +126,9 @@ const PlantHealth = () => {
                       <span className="text-lg">🎯</span>
                       {t('plant.confidence')}
                     </span>
-                    <span className="font-bold text-lg text-accent">{analysis.confidence}%</span>
+                    {useMemo(() => (
+                      <span className="font-bold text-lg text-accent">{formatNumberWithPercent(analysis.confidence)}</span>
+                    ), [analysis.confidence, i18n.language])}
                   </div>
                   <Progress value={analysis.confidence} className="h-3" />
                 </div>

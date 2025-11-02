@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,9 +8,10 @@ import { Label } from '@/components/ui/label';
 import ImageUpload from '@/components/ImageUpload';
 import { soilHealthData } from '@/utils/dummyData';
 import { CheckCircle, AlertCircle } from 'lucide-react';
+import { formatNumber, formatDecimal } from '@/utils/dateUtils';
 
 const SoilAnalysis = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [image, setImage] = useState<string | null>(null);
   const [showResults, setShowResults] = useState(false);
   const [formData, setFormData] = useState(soilHealthData);
@@ -72,13 +73,22 @@ const SoilAnalysis = () => {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Soil Parameters</CardTitle>
+              <CardTitle>{t('soil.parameters')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {Object.entries(formData).map(([key, value]) => (
+              {Object.entries(formData).map(([key, value]) => {
+                // Map keys to correct translation keys
+                const translationKeyMap: Record<string, string> = {
+                  ph: 'phLevel',
+                  nitrogen: 'nitrogenShort',
+                  phosphorus: 'phosphorusShort',
+                  potassium: 'potassiumShort',
+                };
+                const translationKey = translationKeyMap[key] || key;
+                return (
                 <div key={key} className="space-y-2">
-                  <Label htmlFor={key} className="capitalize">
-                    {t(`soil.${key}`)}
+                  <Label htmlFor={key}>
+                    {t(`soil.${translationKey}`)}
                   </Label>
                   <Input
                     id={key}
@@ -90,7 +100,8 @@ const SoilAnalysis = () => {
                     className="w-full"
                   />
                 </div>
-              ))}
+                );
+              })}
               <Button onClick={handleAnalyze} className="w-full" size="lg">
                 {t('soil.analyze')}
               </Button>
@@ -110,35 +121,43 @@ const SoilAnalysis = () => {
               <CardTitle>{t('soil.results')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {Object.entries(formData).map(([key, value]) => {
-                const isOptimal =
-                  (key === 'ph' && value >= 6 && value <= 7.5) ||
-                  (key === 'nitrogen' && value >= 40) ||
-                  (key === 'phosphorus' && value >= 25) ||
-                  (key === 'potassium' && value >= 50) ||
-                  (key === 'moisture' && value >= 30 && value <= 70);
+              {useMemo(() => {
+                return Object.entries(formData).map(([key, value]) => {
+                  const isOptimal =
+                    (key === 'ph' && value >= 6 && value <= 7.5) ||
+                    (key === 'nitrogen' && value >= 40) ||
+                    (key === 'phosphorus' && value >= 25) ||
+                    (key === 'potassium' && value >= 50) ||
+                    (key === 'moisture' && value >= 30 && value <= 70);
 
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ x: -10, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    className="flex items-start gap-3 p-4 rounded-lg bg-muted/50"
-                  >
-                    {isOptimal ? (
-                      <CheckCircle className="h-5 w-5 text-accent mt-0.5" />
-                    ) : (
-                      <AlertCircle className="h-5 w-5 text-destructive mt-0.5" />
-                    )}
-                    <div>
-                      <p className="font-medium capitalize">{t(`soil.${key}`)}: {value}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {getRecommendation(key, value)}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+                  const formattedValue = key === 'ph' || key === 'temperature' 
+                    ? formatDecimal(value, 1) 
+                    : formatNumber(value);
+
+                  return (
+                    <motion.div
+                      key={key}
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      className="flex items-start gap-3 p-4 rounded-lg bg-muted/50"
+                    >
+                      {isOptimal ? (
+                        <CheckCircle className="h-5 w-5 text-accent mt-0.5" />
+                      ) : (
+                        <AlertCircle className="h-5 w-5 text-destructive mt-0.5" />
+                      )}
+                      <div>
+                        <p className="font-medium">
+                          {t(`soil.${key === 'ph' ? 'phLevel' : key}`)}: {formattedValue}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          {getRecommendation(key, value)}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                });
+              }, [formData, i18n.language, t])}
             </CardContent>
           </Card>
         </motion.div>

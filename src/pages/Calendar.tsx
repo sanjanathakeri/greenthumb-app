@@ -1,12 +1,30 @@
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { calendarTasks } from '@/utils/dummyData';
 import { Droplets, Sprout, Scissors, Package, Calendar as CalendarIcon } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { formatDateShort } from '@/utils/dateUtils';
 
 const Calendar = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // Map task titles to translation keys
+  const taskTitleMap: Record<string, string> = {
+    'Water rice field': 'waterRiceField',
+    'Apply organic fertilizer': 'applyOrganicFertilizer',
+    'Prune tomato plants': 'pruneTomatoPlants',
+    'Harvest wheat crop': 'harvestWheatCrop',
+  };
+
+  // Memoize tasks with translated titles that update with language
+  const translatedTasks = useMemo(() => {
+    return calendarTasks.map(task => ({
+      ...task,
+      translatedTitle: t(`calendar.tasks.${taskTitleMap[task.title] || task.title}`),
+    }));
+  }, [i18n.language, t]);
 
   const getTaskIcon = (type: string) => {
     switch (type) {
@@ -38,11 +56,11 @@ const Calendar = () => {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Timeline View</CardTitle>
+              <CardTitle>{t('calendar.timelineView')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {calendarTasks.map((task, index) => (
+                {translatedTasks.map((task, index) => (
                   <motion.div
                     key={task.id}
                     initial={{ x: -20, opacity: 0 }}
@@ -54,11 +72,11 @@ const Calendar = () => {
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         {getTaskIcon(task.type)}
-                        <h3 className="font-medium">{task.title}</h3>
+                        <h3 className="font-medium">{task.translatedTitle}</h3>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CalendarIcon className="h-4 w-4" />
-                        <span>{new Date(task.date).toLocaleDateString()}</span>
+                        <span>{formatDateShort(task.date)}</span>
                       </div>
                     </div>
                   </motion.div>
@@ -75,7 +93,7 @@ const Calendar = () => {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Task Categories</CardTitle>
+              <CardTitle>{t('calendar.taskCategories')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {[
@@ -96,7 +114,7 @@ const Calendar = () => {
                     <span className="font-medium">{category.label}</span>
                   </div>
                   <span className="text-sm text-muted-foreground">
-                    {category.count} tasks
+                    {t('calendar.taskCount', { count: category.count })}
                   </span>
                 </motion.div>
               ))}

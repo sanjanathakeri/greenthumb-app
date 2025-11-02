@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { mapLocations } from '@/utils/dummyData';
 import { MapPin, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { formatNumberWithPercent, formatDecimal } from '@/utils/dateUtils';
 
 const MapView = () => {
   const { t } = useTranslation();
@@ -105,13 +106,13 @@ const MapView = () => {
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Soil Health</span>
-                    <span className="font-medium">{location.soilHealth}%</span>
+                    <span className="text-muted-foreground">{t('dashboard.soilHealth')}</span>
+                    <span className="font-medium">{formatNumberWithPercent(location.soilHealth)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Location</span>
+                    <span className="text-muted-foreground">{t('map.location')}</span>
                     <span className="font-mono text-xs">
-                      {location.lat.toFixed(4)}, {location.lng.toFixed(4)}
+                      {formatDecimal(location.lat, 4)}, {formatDecimal(location.lng, 4)}
                     </span>
                   </div>
                 </div>

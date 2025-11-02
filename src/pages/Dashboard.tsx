@@ -1,19 +1,71 @@
 import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Legend } from 'recharts';
 import { chartData } from '@/utils/dummyData';
 import { TestTube, Leaf, TrendingUp, Activity } from 'lucide-react';
+import { getMonthAbbr, formatNumber, formatNumberWithPercent } from '@/utils/dateUtils';
 
 const Dashboard = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const stats = [
-    { icon: TestTube, label: t('dashboard.soilHealth'), value: '85%', color: 'text-accent' },
-    { icon: Leaf, label: t('dashboard.plantHealth'), value: '92%', color: 'text-primary' },
-    { icon: TrendingUp, label: 'Crop Yield', value: '+15%', color: 'text-secondary' },
-    { icon: Activity, label: 'Active Fields', value: '8', color: 'text-primary-light' },
-  ];
+  // Transform chart data to use localized month names - updates when language changes
+  const localizedChartData = useMemo(() => {
+    return chartData.nutrients.map((item) => {
+      const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(item.month);
+      return {
+        ...item,
+        month: monthIndex !== -1 ? getMonthAbbr(monthIndex) : item.month,
+      };
+    });
+  }, [i18n.language]);
+
+  // Transform soil health data with translated names
+  const localizedSoilHealthData = useMemo(() => {
+    return chartData.soilHealth.map((item) => {
+      const nameMap: Record<string, string> = {
+        'pH': t('soil.ph'),
+        'Moisture': t('soil.moisture'),
+        'Temperature': t('soil.temperature'),
+        'Organic Matter': t('soil.organicMatter'),
+      };
+      return {
+        ...item,
+        name: nameMap[item.name] || item.name,
+      };
+    });
+  }, [i18n.language, t]);
+
+  // Custom tooltip formatter for nutrient charts
+  const customTooltipFormatter = (value: any, name: string) => {
+    const nutrientNames: Record<string, string> = {
+      nitrogen: t('soil.nitrogen'),
+      phosphorus: t('soil.phosphorus'),
+      potassium: t('soil.potassium'),
+    };
+    // Format the number according to locale
+    const formattedValue = typeof value === 'number' ? formatNumber(value) : value;
+    return [formattedValue, nutrientNames[name] || name];
+  };
+
+  // Custom label formatter for nutrient charts
+  const customLabelFormatter = (name: string) => {
+    const nutrientNames: Record<string, string> = {
+      nitrogen: t('soil.nitrogen'),
+      phosphorus: t('soil.phosphorus'),
+      potassium: t('soil.potassium'),
+    };
+    return nutrientNames[name] || name;
+  };
+
+  // Format stats with locale-specific number formatting
+  const stats = useMemo(() => [
+    { icon: TestTube, label: t('dashboard.soilHealth'), value: formatNumberWithPercent(85), color: 'text-accent' },
+    { icon: Leaf, label: t('dashboard.plantHealth'), value: formatNumberWithPercent(92), color: 'text-primary' },
+    { icon: TrendingUp, label: t('dashboard.cropYield'), value: formatNumberWithPercent(15, true), color: 'text-secondary' },
+    { icon: Activity, label: t('dashboard.activeFields'), value: formatNumber(8), color: 'text-primary-light' },
+  ], [i18n.language, t]);
 
   return (
     <div className="space-y-6">
@@ -56,18 +108,19 @@ const Dashboard = () => {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Nutrient Levels Over Time</CardTitle>
+              <CardTitle>{t('dashboard.nutrientLevelsOverTime')}</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={chartData.nutrients}>
+                <LineChart data={localizedChartData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="nitrogen" stroke="hsl(var(--primary))" strokeWidth={2} />
-                  <Line type="monotone" dataKey="phosphorus" stroke="hsl(var(--accent))" strokeWidth={2} />
-                  <Line type="monotone" dataKey="potassium" stroke="hsl(var(--secondary))" strokeWidth={2} />
+                  <YAxis tickFormatter={(value) => formatNumber(value)} />
+                  <Tooltip formatter={customTooltipFormatter} />
+                  <Legend formatter={customLabelFormatter} />
+                  <Line type="monotone" dataKey="nitrogen" name="nitrogen" stroke="hsl(var(--primary))" strokeWidth={2} />
+                  <Line type="monotone" dataKey="phosphorus" name="phosphorus" stroke="hsl(var(--accent))" strokeWidth={2} />
+                  <Line type="monotone" dataKey="potassium" name="potassium" stroke="hsl(var(--secondary))" strokeWidth={2} />
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
@@ -81,16 +134,16 @@ const Dashboard = () => {
         >
           <Card>
             <CardHeader>
-              <CardTitle>Soil Health Metrics</CardTitle>
+              <CardTitle>{t('dashboard.soilHealthMetrics')}</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
-                <RadarChart data={chartData.soilHealth}>
+                <RadarChart data={localizedSoilHealthData}>
                   <PolarGrid />
                   <PolarAngleAxis dataKey="name" />
-                  <PolarRadiusAxis angle={90} domain={[0, 100]} />
-                  <Radar name="Soil Health" dataKey="value" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.6} />
-                  <Tooltip />
+                  <PolarRadiusAxis angle={90} domain={[0, 100]} tickFormatter={(value) => formatNumber(value)} />
+                  <Radar name={t('dashboard.soilHealth')} dataKey="value" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.6} />
+                  <Tooltip formatter={(value: any) => formatNumber(value)} />
                 </RadarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -105,18 +158,19 @@ const Dashboard = () => {
       >
         <Card>
           <CardHeader>
-            <CardTitle>Monthly NPK Distribution</CardTitle>
+            <CardTitle>{t('dashboard.monthlyNPKDistribution')}</CardTitle>
           </CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={chartData.nutrients}>
+              <BarChart data={localizedChartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Bar dataKey="nitrogen" fill="hsl(var(--primary))" />
-                <Bar dataKey="phosphorus" fill="hsl(var(--accent))" />
-                <Bar dataKey="potassium" fill="hsl(var(--secondary))" />
+                <YAxis tickFormatter={(value) => formatNumber(value)} />
+                <Tooltip formatter={customTooltipFormatter} />
+                <Legend formatter={customLabelFormatter} />
+                <Bar dataKey="nitrogen" name="nitrogen" fill="hsl(var(--primary))" />
+                <Bar dataKey="phosphorus" name="phosphorus" fill="hsl(var(--accent))" />
+                <Bar dataKey="potassium" name="potassium" fill="hsl(var(--secondary))" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>

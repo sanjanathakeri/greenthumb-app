@@ -3,15 +3,16 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Download, FileText, Calendar } from 'lucide-react';
+import { formatDate } from '@/utils/dateUtils';
 
 const Reports = () => {
   const { t } = useTranslation();
 
   const reports = [
-    { id: 1, title: 'Soil Health Analysis - October 2025', date: '2025-10-28', type: 'soil' },
-    { id: 2, title: 'Plant Disease Report - October 2025', date: '2025-10-25', type: 'plant' },
-    { id: 3, title: 'Crop Recommendation Summary', date: '2025-10-20', type: 'crop' },
-    { id: 4, title: 'Monthly Farm Analytics', date: '2025-10-15', type: 'analytics' },
+    { id: 1, titleKey: 'reports.soilHealthAnalysis', date: '2025-10-28', type: 'soil' },
+    { id: 2, titleKey: 'reports.plantDiseaseReport', date: '2025-10-25', type: 'plant' },
+    { id: 3, titleKey: 'reports.cropRecommendationSummary', date: '2025-10-20', type: 'crop' },
+    { id: 4, titleKey: 'reports.monthlyFarmAnalytics', date: '2025-10-15', type: 'analytics' },
   ];
 
   const handleDownload = (reportId: number) => {
@@ -33,7 +34,7 @@ const Reports = () => {
       >
         <Card>
           <CardHeader>
-            <CardTitle>Generate New Report</CardTitle>
+            <CardTitle>{t('reports.generateNew')}</CardTitle>
           </CardHeader>
           <CardContent>
             <Button size="lg" className="w-full md:w-auto">
@@ -59,10 +60,10 @@ const Reports = () => {
                     <div className="flex items-start gap-3">
                       <FileText className="h-5 w-5 text-primary mt-1" />
                       <div>
-                        <h3 className="font-medium">{report.title}</h3>
+                        <h3 className="font-medium">{t(report.titleKey)}</h3>
                         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
                           <Calendar className="h-4 w-4" />
-                          <span>{report.date}</span>
+                          <span>{formatDate(report.date)}</span>
                         </div>
                       </div>
                     </div>
