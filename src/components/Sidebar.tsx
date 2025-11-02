@@ -23,11 +23,9 @@ const Sidebar = () => {
     { icon: TestTube, label: t('nav.soilAnalysis'), path: '/soil-analysis' },
     { icon: Leaf, label: t('nav.plantHealth'), path: '/plant-health' },
     { icon: Sprout, label: t('nav.cropRecommendations'), path: '/crop-recommendations' },
-    { icon: FileText, label: t('nav.reports'), path: '/reports' },
-    { icon: MapPin, label: t('nav.mapView'), path: '/map-view' },
-    { icon: MessageSquare, label: t('nav.forum'), path: '/forum' },
     { icon: Calendar, label: t('nav.calendar'), path: '/calendar' },
     { icon: Award, label: t('nav.sustainability'), path: '/sustainability' },
+    
   ];
 
   return (
